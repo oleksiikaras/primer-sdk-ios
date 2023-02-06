@@ -44,6 +44,9 @@ public class Primer {
      */
     
     public func configure(settings: PrimerSettings? = nil, delegate: PrimerDelegate? = nil) {
+        let primerSettings: PrimerSettings = settings ?? PrimerSettings()
+        DependencyContainer.register(primerSettings as PrimerSettingsProtocol)
+        DependencyContainer.register(primerSettings.uiOptions.theme as PrimerThemeProtocol)
         self.delegate = delegate
         PrimerInternal.shared.configure(settings: settings)
     }
